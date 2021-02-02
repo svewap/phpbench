@@ -22,7 +22,7 @@ class UnixSysload implements ProviderInterface
 {
     public function isApplicable(): bool
     {
-        return false === stristr(PHP_OS, 'win');
+        return is_array(sys_getloadavg()) && false === stristr(PHP_OS, 'win');
     }
 
     public function getInformation(): Information
